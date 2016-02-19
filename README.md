@@ -34,7 +34,7 @@ Options:
   --health-check-timeout=sec     | -T sec     Individual health check timeout (default: 5 sec)
   --timeout=sec                  | -t sec     Operation (start/stop/etc) timeout (default: 30 sec)
   --unicorn-config=file          | -c file    Unicorn config file to use, absolute or relative path (default: shared/unicorn.rb)
-  --rackup-config=file           | -r file    Rackup config file to use, absolute or relative path (default: current/config.ru)
+  --rackup-config=file           | -r file    Rackup config file to use, absolute or relative path (default: app-dir/config.ru)
   --pid-file=file                | -p file    PID-file unicorn is configured to use (default: shared/pids/unicorn.pid)
   --rainbows                     | -R         Use rainbows to start the app (default: use unicorn)
   --help                         | -h         This help
