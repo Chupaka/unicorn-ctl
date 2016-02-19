@@ -61,7 +61,7 @@ def rackup_config_file(options)
   if options[:rackup_config]
     app_file_path(options[:app_dir], options[:rackup_config])
   else
-    File.join(options[:app_dir], 'current', 'config.ru')
+    File.join(options[:app_dir], 'config.ru')
   end
 end
 
@@ -219,7 +219,7 @@ def start_application!(options)
   end
 
   # Compose unicorn startup command
-  command = "cd #{escape options[:app_dir]}/current && #{options[:bundle_command]} exec #{options[:unicorn_bin]} " <<
+  command = "cd #{escape options[:app_dir]} && #{options[:bundle_command]} exec #{options[:unicorn_bin]} " <<
             "--env #{escape options[:env]} --daemonize --config-file #{escape unicorn_config} "
             "#{escape rackup_config}"
 
@@ -487,7 +487,7 @@ def show_help(error = nil)
   puts '  --timeout=sec                  | -t sec     Operation (start/stop/etc) timeout (default: 30 sec)'
   puts '  --bundle-command=cmd           | -b cmd     Command that executes bundler (default: bundle)'
   puts '  --unicorn-config=file          | -c file    Unicorn config file to use, absolute or relative path (default: shared/unicorn.rb)'
-  puts '  --rackup-config=file           | -r file    Rackup config file to use, absolute or relative path (default: current/config.ru)'
+  puts '  --rackup-config=file           | -r file    Rackup config file to use, absolute or relative path (default: app-dir/config.ru)'
   puts '  --pid-file=file                | -p file    PID-file unicorn is configured to use (default: shared/pids/unicorn.pid)'
   puts '  --watch-proctitle              | -W         Watch new master proctitle until it changes, which usually means it has finished loading'
   puts '  --rainbows                     | -R         Use rainbows to start the app (default: use unicorn)'
